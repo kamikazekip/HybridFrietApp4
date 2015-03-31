@@ -53,10 +53,6 @@ $(document).ready(function(){
 	loadDishes();
 	loadUsers();
 
-
-	if(parseFloat(window.device.version)=== 7.0){
-		document.body.style.marginTop ="20px";
-	}
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
 	$("#placeOrderButton").on("tap", function(){
 		var scopeDish = $("#select-products-order").val();
