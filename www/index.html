@@ -26,24 +26,12 @@
     </style>
 
 </head>
-<body>
+<body onload="onLoad()">
     <script src="./public/js/scripts.js"></script>
     <script src="./public/js/user.js"></script>
     <script src="./public/js/groups.js"></script>
     <script src="./public/js/orders.js"></script>
     <script src="./public/js/jquery.base64.js"></script>
-    <script>
-        function onDeviceReady() {
-            if(window.device){
-                if (parseFloat(window.device.version) >= 7.0) {
-                  document.body.style.marginTop = "20px";
-                }
-            }
-        }
-         
-        document.addEventListener('deviceready', onDeviceReady, false);
-    </script>
-   
 
     <!-- Start of first page -->
     <div data-role="page" id="page-login">
@@ -241,7 +229,14 @@
         </div><!-- /content -->
     </div><!-- /page -->
 
-    <!-- LOGOUT BUTTON
-    <button class="ui-btn ui-shadow" id="main-btn-logout">Logout</button> -->
+    <script>
+        function onLoad(){
+            document.addEventListener('deviceready', onDeviceReady);
+        }
+
+        function onDeviceReady(){
+            StatusBar.overlaysWebView(false);
+        }
+    </script>
 </body>
 </html>
