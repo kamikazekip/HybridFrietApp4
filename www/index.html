@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Friet App</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="./public/lib/jquery/jquery-1.11.1.min.js"></script>
+    <script src="./public/lib/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="./public/css/frietApp.css" />
+    <link rel="stylesheet" href="./public/css/frietApp.min.css" />
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <style>
+         .ui-page{
+           /* background: url(http://filmkopen.nl/public/img/friet.png) no-repeat center center fixed; */
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-size:100% 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <script src="./public/js/scripts.js"></script>
+    <script src="./public/js/user.js"></script>
+    <script src="./public/js/groups.js"></script>
+    <script src="./public/js/orders.js"></script>
+    <script src="./public/js/jquery.base64.js"></script>
+
+   
+
+    <!-- Start of first page -->
+    <div data-role="page" id="page-login">
+
+        <div data-role="header">
+            <h1>Friet App - Login</h1>
+            <a href="#page-register" data-transition="slide" class="ui-btn ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-right">Registreren</a>    
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <div class="message-error"></div>
+            <div class="message-succes"></div>
+            <input type="text" name="text-basic" id="login-text-gebruikersnaam" class="login-text " value="" placeholder="Gebruikersnaam">
+            <input type="password" name="text-basic" id="login-text-wachtwoord" class="login-text " value="" placeholder="Wachtwoord">
+            <button class="ui-btn ui-shadow" id="login-btn-login">Login</button>
+        </div><!-- /content -->
+
+
+    </div><!-- /page -->
+
+    <div data-role="page" id="page-register">
+
+        <div data-role="header">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">Terug</a> 
+            <h1>Friet App - registreren</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <div id="login-errors">
+            </div>
+            <input type="text"  id="register-text-gebruikersnaam" class="register-text " placeholder="Gebruikersnaam">
+            <input type="password"  id="register-text-wachtwoord" class="register-text "  placeholder="Wachtwoord">
+            <input type="password"  id="register-text-wachtwoord2" class="register-text " value="" placeholder="Herhaal wachtwoord">
+            <button class="ui-btn ui-shadow" id="register-btn-register">Registreer</button>
+        </div><!-- /content -->
+
+
+    </div><!-- /page -->
+
+    <!-- Start of main page -->
+    <div data-role="page"  id="page-main">
+        <div data-role="panel" id="myPanel" data-position-fixed="true"> 
+            <a href="#"  data-rel="close" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext">close</a> 
+            <h2> Instellingen </h2>
+            
+            <button class="ui-btn " id="main-btn-logout">Logout</button> 
+          </div> 
+        <div data-role="header">
+            
+            <h1>Friet Groepen</h1>
+            <a href="#page-newGroup" data-transition="slide" class="ui-btn ui-corner-all ui-icon-plus ui-btn-icon-notext ui-btn-right">Nieuwe Groep</a>             
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <p id="geolocation">Finding geolocation...</p>
+            <div id="main-list-groepen">
+
+            </div>
+            
+        </div><!-- /content -->
+    </div><!-- /page -->
+
+
+ <!-- Lijst met bestellingen -->
+    <div data-role="page" id="page-group">
+
+        <div data-role="header">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">Terug</a> 
+            <h1 id="group-title-name">Geen waarde ingeladen</h1>
+            <button class="ui-btn ui-icon-plus ui-btn-icon-left" id="group-button-order" data-transition="slide">Bestelling</button>
+        </div><!-- /header -->
+        <div role="main" class="ui-content">
+            <div id="group-list-orders">
+
+            </div>
+        </div><!-- /content -->
+        <div data-role="footer" data-position="fixed">
+          <center><a href="#page-addToGroup" class="ui-btn ui-icon-plus ui-btn-icon-left">Toevoegen aan de groep</a><center>
+        </div>
+    </div><!-- /page -->
+
+
+     <!-- Lijst met bestellingen -->
+    <div data-role="page" id="page-addToGroup">
+
+        <div data-role="header">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">Terug</a> 
+            <h1 id="group-title-name">Toevoegen aan de groep</h1>
+        </div><!-- /header -->
+        <div role="main" class="ui-content">
+            <div class="ui-field-contain" i>
+                <select id="userNameAddToGroup" name="userNameAddToGroup" data-inline="true"></select>
+                <button id="btn-addToGroup" data-inline="true">Toevoegen</button>
+                 
+            </div>
+        </div>
+    </div><!-- /page -->
+
+
+    <!-- Eeen bestelling bekijken -->
+    <div data-role="page" id="page-order">
+
+        <div data-role="header">
+            
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">Terug</a> 
+
+
+            <h1 id="order-title-name">Geen waarde ingeladen</h1>    
+
+
+            
+               
+
+
+        </div><!-- /header -->
+        <div role="main" class="ui-content">
+            <div id="">
+
+
+                <link href="./public/lib/footable/css/footable.core.css" rel="stylesheet" type="text/css" />
+
+                <link href="./public/lib/footable/css/footable.metro.css" rel="stylesheet" type="text/css" />
+                <script src="./public/lib/footable/js/footable.js" type="text/javascript"></script>
+                <script src="./public/lib/footable/js/footable.filter.js" type="text/javascript"></script>
+
+                <script type="text/javascript">
+                $(function () {
+                    $('.footable').footable();                   
+                });
+                </script>
+                <div class="ui-field-contain" id="orderPlaatsenInputFields">
+                    <select id="select-products-order" name="select-products-order" data-inline="true"></select>
+                    <button id="placeOrderButton" data-inline="true">Plaatsen</button>
+                     
+                </div>
+                <span>Zoeken</span>
+                <input type="text" id="table-filter" placeholer="Zoek gebruiker / snack">
+                <table class="footable metro-orange" data-filter="#filter" data-page-size="5" id="order-table-orders">
+                  <thead>
+                    <tr>
+                      <th>Wie</th>
+                      <th >Wat</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Henk </td>
+                      <td>Shoarma</td>
+                    </tr>
+                    <tr>
+                      <td>Bert</td>
+                      <td>Friet</td>
+                    </tr>
+                    <tr>
+                      <td>Sjaak</td>
+                      <td>Kipknots</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button id="orderDoneButton">Afronden</button>
+            </div>
+        </div><!-- /content -->
+    </div><!-- /page -->
+
+
+    <!-- Nieuwe groep aanmaken -->
+    <div data-role="page" id="page-newOrder">
+
+        <div data-role="header">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">Terug</a> 
+            <h1>Order plaatsen</h1>
+
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content" >
+            <center><h2>Kies een snackbar </h2></center>
+            <div id="list-bestlling-snackbars">
+            </div>
+            
+        </div><!-- /content -->
+    </div><!-- /page -->
+
+
+    <!-- Nieuwe groep aanmaken -->
+    <div data-role="page" id="page-newGroup">
+
+        <div data-role="header">
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">Terug</a> 
+            <h1>Groep toevoegen</h1>
+
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <input type="text" name="text-basic" id="newGroup-text-titel" value="" placeholder="Naam van de groep">
+            <button class="ui-btn ui-shadow" id="newGroup-btn-create">Aanmaken</button>
+        </div><!-- /content -->
+    </div><!-- /page -->
+
+    <!-- LOGOUT BUTTON
+    <button class="ui-btn ui-shadow" id="main-btn-logout">Logout</button> -->
+</body>
+</html>
