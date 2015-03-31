@@ -32,7 +32,17 @@
     <script src="./public/js/groups.js"></script>
     <script src="./public/js/orders.js"></script>
     <script src="./public/js/jquery.base64.js"></script>
-
+    <script>
+        function onDeviceReady() {
+            if(window.device){
+                if (parseFloat(window.device.version) >= 7.0) {
+                  document.body.style.marginTop = "20px";
+                }
+            }
+        }
+         
+        document.addEventListener('deviceready', onDeviceReady, false);
+    </script>
    
 
     <!-- Start of first page -->
@@ -50,7 +60,6 @@
             <input type="password" name="text-basic" id="login-text-wachtwoord" class="login-text " value="" placeholder="Wachtwoord">
             <button class="ui-btn ui-shadow" id="login-btn-login">Login</button>
         </div><!-- /content -->
-
 
     </div><!-- /page -->
 
