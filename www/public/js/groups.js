@@ -2,18 +2,18 @@ var globalGroupsLoaded = false;
 var globalSelectedGroup = 0;
 
 // Een groep aanmaken
-$(document).on('click','#newGroup-btn-create', function() {
+$(document).on('tap','#newGroup-btn-create', function() {
 	addGroup();
 	
 })
 
 // Een  groep bekijken
-$(document).on('click','.main-btn-group', function() {	
+$(document).on('tap','.main-btn-group', function() {	
 	viewGroup($(this).data("id"));
 })
 
 // Een  gebruiker toevoegen aan de gorep
-$(document).on('click','#btn-addToGroup', function() {	
+$(document).on('tap','#btn-addToGroup', function() {	
 	var scopeSelectedUser = $("#userNameAddToGroup").val();
 	$.ajax( {
 			url : globalServerUrl + '/groups/'+globalSelectedGroup+'/addUser/'+scopeSelectedUser,

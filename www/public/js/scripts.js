@@ -230,7 +230,7 @@ $(document).on('pagebeforeshow', '#popupOrderProducts', function(){
 
 
 $( document ).ready(function() {
-	$(document).on('click','#popupOrderProducts-send', function() {
+	$(document).on('tap','#popupOrderProducts-send', function() {
 		placeOrder();	
 	})
 });
@@ -260,7 +260,7 @@ $(document).ready(function(){
 
 
 // Inloggen
-$(document).on('click','#login-btn-login', function() {
+$(document).on('tap','#login-btn-login', function() {
 	login();
 })
 
@@ -268,12 +268,12 @@ $(document).on('click','#login-btn-login', function() {
 
 
 // Uitloggen
-$(document).on('click','#main-btn-logout', function() {
+$(document).on('tap','#main-btn-logout', function() {
 	logout();
 })
 
 // Een groep aanmaken
-$(document).on('click','#order-button-addProducts', function() {
+$(document).on('tap','#order-button-addProducts', function() {
 	alert('Kies producten ' + globalSelectedOrder);
 })
 

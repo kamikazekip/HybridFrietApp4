@@ -1,14 +1,14 @@
 // Een groep aanmaken
-$(document).on('click','.group-button-place-order', function() {
+$(document).on('tap','.group-button-place-order', function() {
 	newOrder($(this));
 })
 
-$(document).on('click','#group-button-order', function() {
+$(document).on('tap','#group-button-order', function() {
 	$.mobile.changePage("#page-newOrder", {transition : "slideup"});
 })
 
 // Inloggen
-$(document).on('click','#orderDoneButton', function() {
+$(document).on('tap','#orderDoneButton', function() {
 	console.log(globalSelectedOrder);
 	$.ajax( {
 		url : globalServerUrl + '/orders/'+globalSelectedOrder,
@@ -37,7 +37,7 @@ $(document).on('click','#orderDoneButton', function() {
 })
 
 // Een bestelling bekijken.
-$(document).on('click','.group-btn-order', function() {	
+$(document).on('tap','.group-btn-order', function() {	
 	var title = $(this).html();
 	var orderId = $(this).data("id");
 	if($(this).hasClass('group-btn-order-active')){
@@ -88,9 +88,9 @@ $(document).on('click','.group-btn-order', function() {
 })
 
 
-function newOrder(clicker){
-	var snackBarNaam = clicker.data("snackbarnaam");
-	var snackBarWeb = clicker.data("snackbarweb");
+function newOrder(taper){
+	var snackBarNaam = taper.data("snackbarnaam");
+	var snackBarWeb = taper.data("snackbarweb");
 	var postData = {
 			snackbar : snackBarNaam,
 			url : snackBarWeb

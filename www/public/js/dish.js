@@ -1,4 +1,4 @@
-$(document).on('click','#orderDoneButton', function() {
+$(document).on('tap','#orderDoneButton', function() {
 	orderDone();
 })
 

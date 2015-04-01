@@ -1,6 +1,6 @@
 var globalAuthheader = "";
 
-$(document).on('click','#register-btn-register', function() {	
+$(document).on('tap','#register-btn-register', function() {	
 	handleRegister();	
 })
 
