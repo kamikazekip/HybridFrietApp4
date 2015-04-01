@@ -30,6 +30,7 @@ $(document).on('click','#orderDoneButton', function() {
 		},
 		success : function(model) {
 			$("body").find("[data-id='" + globalSelectedOrder + "']").removeClass('group-btn-order-active');
+			navigator.notification.vibrate(2000);
 			 history.back();
 		}
 	});

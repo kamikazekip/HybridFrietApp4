@@ -79,14 +79,11 @@ $(document).ready(function(){
 					console.log('Something went wrong '); 
 					console.log(thrownError);
 				}
-				// Fout weergeven op login scherm
-				$('.message-error').html("Invalid login !");
-				$('#login-text-gebruikersnaam').val("");
-				$('#login-text-wachtwoord').val("");
 				clearMessages();
 				
 			},
 			success : function(model) {
+				navigator.notification.vibrate(2000);
 				$('#order-table-orders tbody').append('<tr><td>'+getUsername() +'</td><td>'+scopeDish+'</td></tr>');
 				console.log('groep gemaakt'); 
 			}
@@ -157,10 +154,7 @@ $(document).ready(function(){
      // onError Callback receives a PositionError object
     //
     function onErrorGeo(error) {
-    	$('#myGeo').html('No geo');
-    	scropeLink = '<hr><center><a href="http://www.google.com" >Website</a></center>';
-    	$('#list-bestlling-snackbars').append(scropeLink);
-        $('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow" data-snackbarnaam="Overig" data-snackbarweb="" class="group-button-place-order">Overig</button>');
+        $('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow group-button-place-order" data-snackbarnaam="Overig" data-snackbarweb="" class="group-button-place-order">Overig</button>');
     }
 
 function loadUsers(){
