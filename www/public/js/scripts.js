@@ -138,11 +138,11 @@ $(document).ready(function(){
 							}
 							var scropeLink = "";
 							if(scropeHasLink){
-								scropeLink = '<hr><center><a href="#" onclick="window.open(\''+model[i].url+'\', \'_system\');">Bekijk website</a></center>';
+								scropeLink = '<center><a href="#" onclick="window.open(\''+model[i].url+'\', \'_system\');">Bekijk website</a></center>';
 							}
 							
 							$('#list-bestlling-snackbars').append(scropeLink);
-							$('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow group-button-place-order" data-snackbarnaam="'+model[i].snackbar+'" data-snackbarweb="'+model[i].url+'">'+model[i].snackbar +'</button>');
+							$('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow group-button-place-order" data-snackbarnaam="'+model[i].snackbar+'" data-snackbarweb="'+model[i].url+'">'+model[i].snackbar +'</button><hr>');
 
 						}
 
