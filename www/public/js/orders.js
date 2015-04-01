@@ -18,7 +18,9 @@ $(document).on('tap','#orderDoneButton', function() {
 	          //var bytes = Crypto.charenc.Binary.stringToBytes(inputUserName + ":" + inputPassword);
 	          //var base64 = Crypto.util.bytesToBase64(bytes);
 	          xhr.setRequestHeader("Authorization", globalAuthheader);
+		 	$.mobile.loading('show');
 		},
+		complete: function() { $.mobile.loading('hide'); }, //Hide spinner
 		error : function(xhr, ajaxOptions, thrownError) {
 			if (thrownError === "Unauthorized"){
 				console.log('unauthorized');
@@ -62,7 +64,9 @@ $(document).on('tap','.group-btn-order', function() {
 		          //var bytes = Crypto.charenc.Binary.stringToBytes(inputUserName + ":" + inputPassword);
 		          //var base64 = Crypto.util.bytesToBase64(bytes);
 		          xhr.setRequestHeader("Authorization", globalAuthheader);
+			 	$.mobile.loading('show');
 			},
+			complete: function() { $.mobile.loading('hide'); }, //Hide spinner
 			error : function(xhr, ajaxOptions, thrownError) {
 				if (thrownError === "Unauthorized"){
 					console.log('unauthorized');
@@ -109,7 +113,9 @@ function newOrder(taper){
 		          //var bytes = Crypto.charenc.Binary.stringToBytes(inputUserName + ":" + inputPassword);
 		          //var base64 = Crypto.util.bytesToBase64(bytes);
 		          xhr.setRequestHeader("Authorization", globalAuthheader);
+			 	$.mobile.loading('show');
 			},
+			complete: function() { $.mobile.loading('hide'); }, //Hide spinner
 			error : function(xhr, ajaxOptions, thrownError) {
 				if (thrownError === "Unauthorized"){
 					console.log('unauthorized');

@@ -55,6 +55,10 @@ function handleRegister(){
 			dataType : 'json',
 			data : postData,
 			type : "Post",
+			beforeSend: function(){
+			 $.mobile.loading('show');
+			},
+			complete: function() { $.mobile.loading('hide'); }, //Hide spinner
 			error : function(xhr, ajaxOptions, thrownError) {
 				if (thrownError === "Unauthorized"){
 					console.log('unauthorized');
@@ -97,7 +101,9 @@ function login(){
 		          //var bytes = Crypto.charenc.Binary.stringToBytes(inputUserName + ":" + inputPassword);
 		          //var base64 = Crypto.util.bytesToBase64(bytes);
 		          xhr.setRequestHeader("Authorization", authHeader);
+		           $.mobile.loading('show');
 			},
+			complete: function() { $.mobile.loading('hide'); }, //Hide spinner
 			error : function(xhr, ajaxOptions, thrownError) {
 				if (thrownError === "Unauthorized"){
 					console.log('unauthorized');
