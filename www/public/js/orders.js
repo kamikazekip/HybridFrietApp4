@@ -1,6 +1,6 @@
 // Een groep aanmaken
-$(document).on('click','#group-button-place-order', function() {
-	newOrder();
+$(document).on('click','.group-button-place-order', function() {
+	newOrder($(this));
 })
 
 $(document).on('click','#group-button-order', function() {
@@ -87,12 +87,22 @@ $(document).on('click','.group-btn-order', function() {
 })
 
 
-function newOrder(){
+function newOrder(clicker){
+	var snackBarNaam = clicker.data("snackbarnaam");
+	var snackBarWeb = clicker.data("snackbarweb");
+	var postData = {
+			snackbar : snackBarNaam,
+			url : snackBarWeb
+		
+
+	}
+
 	var r = confirm("Nieuwe bestelling halen ?");
 	if (r == true) {
 	    $.ajax( {
 			url : globalServerUrl + '/groups/'+globalSelectedGroup+"/order",
 			dataType : 'json',
+			data : postData,
 			type : "Post",
 			beforeSend : function(xhr) {
 		          //var bytes = Crypto.charenc.Binary.stringToBytes(inputUserName + ":" + inputPassword);

@@ -53,7 +53,7 @@ $(document).ready(function(){
 	loadDishes();
 	loadUsers();
 
-	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
 	$("#placeOrderButton").on("tap", function(){
 		var scopeDish = $("#select-products-order").val();
 
@@ -101,17 +101,8 @@ $(document).ready(function(){
 
     // onSuccess Geolocation
     //
-    function onSuccess(position) {
-        var element = document.getElementById('geolocation');
+    function onSuccessGeo(position) {
         console.log(position);
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude             + '<br />' +
-                            'Altitude: '           + position.coords.altitude              + '<br />' +
-                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
-                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-                            'Heading: '            + position.coords.heading               + '<br />' +
-                            'Speed: '              + position.coords.speed                 + '<br />' +
-                            'Timestamp: '          + position.timestamp                    + '<br />';
         globalLocation = position;
 
         $.ajax( {
@@ -140,7 +131,8 @@ $(document).ready(function(){
 					success : function(model) {
 						console.log('We got some snackbars bro');
 						for(i = 0; i < model.length; i ++){
-							$('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow" id="group-button-place-order">'+model[i].snackbar+'</button>');
+							var scropeLink = '<a href="#" onclick="window.open(\'http://www.google.com\', \'_system\');">www.google.com</a>';
+							$('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow group-button-place-order" data-snackbarnaam="'+model[i].snackbar+'" data-snackbarweb="'+model[i].url+'">'+model[i].snackbar + "      - - - "+scropeLink+'</button>');
 
 						}
 
@@ -154,9 +146,8 @@ $(document).ready(function(){
 
      // onError Callback receives a PositionError object
     //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
+    function onErrorGeo(error) {
+        $('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow" data-snackbarnaam="Overig" data-snackbarweb="" class="group-button-place-order">Overig</button>');
     }
 
 function loadUsers(){
