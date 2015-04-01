@@ -99,7 +99,7 @@ function getGroup(groupId){
 			if(groups[i]._id === groupId)
 			{	
 				$.ajax( {
-					url : globalServerUrl + '/groups/'+groupId+'/orders',
+					url : globalServerUrl + '/groups/'+groupId+'/orders?orderBy=active',
 					dataType : 'json',
 					type : "get",
 					beforeSend : function(xhr) {

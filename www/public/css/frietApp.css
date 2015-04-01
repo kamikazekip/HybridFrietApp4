@@ -767,5 +767,12 @@ button[disabled],
 			
 
 .group-btn-order-active{
-	background-color:red !important;
+	background-color:rgb(60, 152, 79) !important;
+}
+
+ @media (min-width:35em){
+    .ui-panel{
+        width:30em;
+    }
+    .ui-panel-close { width:30em; }
 }
