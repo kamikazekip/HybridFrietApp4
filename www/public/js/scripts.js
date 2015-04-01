@@ -132,8 +132,17 @@ $(document).ready(function(){
 					success : function(model) {
 						console.log('We got some snackbars bro');
 						for(i = 0; i < model.length; i ++){
-							var scropeLink = '<a href="#" onclick="window.open(\'http://www.google.com\', \'_system\');">www.google.com</a>';
-							$('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow group-button-place-order" data-snackbarnaam="'+model[i].snackbar+'" data-snackbarweb="'+model[i].url+'">'+model[i].snackbar + "      - - - "+scropeLink+'</button>');
+							var scropeHasLink = false;
+							if("Sorry, geen url" !== model[i].url){
+								scropeHasLink = true;
+							}
+							var scropeLink = "";
+							if(scropeHasLink){
+								scropeLink = '<hr><center><a href="#" onclick="window.open(\''+model[i].url+'\', \'_system\');">Bekijk website</a></center>';
+							}
+							
+							$('#list-bestlling-snackbars').append(scropeLink);
+							$('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow group-button-place-order" data-snackbarnaam="'+model[i].snackbar+'" data-snackbarweb="'+model[i].url+'">'+model[i].snackbar +'</button>');
 
 						}
 
@@ -149,6 +158,8 @@ $(document).ready(function(){
     //
     function onErrorGeo(error) {
     	$('#myGeo').html('No geo');
+    	scropeLink = '<hr><center><a href="http://www.google.com" >Website</a></center>';
+    	$('#list-bestlling-snackbars').append(scropeLink);
         $('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow" data-snackbarnaam="Overig" data-snackbarweb="" class="group-button-place-order">Overig</button>');
     }
 
