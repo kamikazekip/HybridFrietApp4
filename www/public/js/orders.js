@@ -1,10 +1,12 @@
 // Een groep aanmaken
 $(document).on('tap','.group-button-place-order', function() {
 	newOrder($(this));
+	return false;
 })
 
 $(document).on('tap','#group-button-order', function() {
 	$.mobile.changePage("#page-newOrder", {transition : "slideup"});
+	return false;
 })
 
 // Inloggen
@@ -36,6 +38,7 @@ $(document).on('tap','#orderDoneButton', function() {
 			 history.back();
 		}
 	});
+	return false;
 })
 
 // Een bestelling bekijken.
@@ -89,6 +92,7 @@ $(document).on('tap','.group-btn-order', function() {
 	}
 	
 	$.mobile.changePage("#page-order", {transition : "slide"});	
+	return false;
 })
 
 

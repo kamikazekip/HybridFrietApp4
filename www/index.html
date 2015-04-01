@@ -268,10 +268,13 @@
 
     <script>
         document.addEventListener("deviceready", function(){
-            if (window.device.platform === 'iOS' && parseFloat(window.device.version) > 7.0) {
+            if(window != undefined && window.device != undefined){
+                 if (window.device.platform === 'iOS' && parseFloat(window.device.version) > 7.0) {
                 StatusBar.overlaysWebView(false);
                 StatusBar.backgroundColorByHexString("#f7931e");
+                }
             }
+           
          },true);
     </script>
 </body>

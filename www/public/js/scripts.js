@@ -232,6 +232,7 @@ $(document).on('pagebeforeshow', '#popupOrderProducts', function(){
 $( document ).ready(function() {
 	$(document).on('tap','#popupOrderProducts-send', function() {
 		placeOrder();	
+		return false;
 	})
 });
 
@@ -262,6 +263,7 @@ $(document).ready(function(){
 // Inloggen
 $(document).on('tap','#login-btn-login', function() {
 	login();
+	return false;
 })
 
 
@@ -270,11 +272,13 @@ $(document).on('tap','#login-btn-login', function() {
 // Uitloggen
 $(document).on('tap','#main-btn-logout', function() {
 	logout();
+	return false;
 })
 
 // Een groep aanmaken
 $(document).on('tap','#order-button-addProducts', function() {
 	alert('Kies producten ' + globalSelectedOrder);
+	return false;
 })
 
 

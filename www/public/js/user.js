@@ -2,6 +2,7 @@ var globalAuthheader = "";
 
 $(document).on('tap','#register-btn-register', function() {	
 	handleRegister();	
+	return false;
 })
 
 // De login pagina laden

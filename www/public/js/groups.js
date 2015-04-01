@@ -4,12 +4,13 @@ var globalSelectedGroup = 0;
 // Een groep aanmaken
 $(document).on('tap','#newGroup-btn-create', function() {
 	addGroup();
-	
+	return false;
 })
 
 // Een  groep bekijken
 $(document).on('tap','.main-btn-group', function() {	
 	viewGroup($(this).data("id"));
+	return false;
 })
 
 // Een  gebruiker toevoegen aan de gorep
@@ -39,6 +40,7 @@ $(document).on('tap','#btn-addToGroup', function() {
 				history.back();
 			}
 		});
+	return false;
 })
 
 
