@@ -118,13 +118,7 @@ $(document).ready(function(){
 						}
 						else{
 							console.log('Something went wrong');
-						}
-						// Fout weergeven op login scherm
-						$('.message-error').html("Invalid login !");
-						$('#login-text-gebruikersnaam').val("");
-						$('#login-text-wachtwoord').val("");
-						clearMessages();
-						
+						}						
 					},
 					success : function(model) {
 						console.log('We got some snackbars bro');
@@ -293,7 +287,7 @@ function clearMessages(){
 ///  SWIPE EVENTS
 
 $( document ).ready(function() {
-	$( document ).on( "swipeleft swiperight", "#page-main", function( e ) {
+	$( document ).on( "swipeleft swiperight", "body", function( e ) {
 	// We check if there is no open panel on the page because otherwise
 	// a swipe to close the left panel would also open the right panel (and v.v.).
 	// We do this by checking the data that the framework stores on the page element (panel: open).

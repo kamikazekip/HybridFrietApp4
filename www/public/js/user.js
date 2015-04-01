@@ -68,9 +68,7 @@ function handleRegister(){
 					console.log('Something went wrong : '+thrownError);
 				}
 				// Fout weergeven op login scherm
-				$('#login-errors').html("Invalid login !");
-				$('#login-text-gebruikersnaam').val("");
-				$('#login-text-wachtwoord').val("");
+				$('#login-errors').html("Invalid register !");
 			},
 			success : function(model) {
 			  $.mobile.changePage("#page-login", {transition : "slideup"});;

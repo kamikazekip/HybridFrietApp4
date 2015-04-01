@@ -127,11 +127,6 @@ function newOrder(taper){
 				else{
 					console.log('Something went wrong');
 				}
-				// Fout weergeven op login scherm
-				$('.message-error').html("Invalid login !");
-				$('#login-text-gebruikersnaam').val("");
-				$('#login-text-wachtwoord').val("");
-				clearMessages();
 				
 			},
 			success : function(model) {

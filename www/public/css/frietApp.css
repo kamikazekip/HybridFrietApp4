@@ -770,10 +770,26 @@ button[disabled],
 	background-color:rgb(60, 152, 79) !important;
 }
 
- @media (min-width:35em){
-    .ui-panel{
-        width:30em;
-    }
-    .ui-panel-close { width:30em; }
-    .ui-panel-closed {  width: 17em; }
+@media all and (min-width: 800px) {
+  #responsive {
+  	position:relative;
+  	float:left;
+    visibility: visible;
+    width:18%;
+    margin-right:2%;
+  }
+  #main-list-groepen{
+  	position:relative;
+  	float:right;
+  	width:80%;
+  }
+}
+
+@media all and (max-width: 799px) {
+  #responsive {
+    visibility: hidden;
+  }
+  #main-list-groepen{
+  	width:100%;
+  }
 }
