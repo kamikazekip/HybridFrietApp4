@@ -24,6 +24,10 @@
             background-size: cover;
             background-size:100% 100%;
         }
+
+        div[data-role="header"]{
+            border-top: 0px solid black;
+        }
     </style>
 
 </head>
@@ -248,8 +252,8 @@
         document.addEventListener("deviceready", function(){
             if (window.device.platform === 'iOS' && parseFloat(window.device.version) > 7.0) {
                 StatusBar.overlaysWebView(false);
+                StatusBar.backgroundColorByHexString("#f7931e");
             }
-            StatusBar.backgroundColorByHexString("#f7931e");
          },true);
     </script>
 </body>
