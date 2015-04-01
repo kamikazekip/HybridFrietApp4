@@ -146,6 +146,7 @@ function getGroup(groupId){
 
 // Een specifieke groep inladen
 function viewGroup(groupId){
+	 navigator.notification.vibrate(2000);
 	if(groupId !== globalSelectedGroup){
 		addGroups = "";
 		$('#group-list-orders').empty();
