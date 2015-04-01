@@ -26,7 +26,7 @@
     </style>
 
 </head>
-<body onload="onLoad()">
+<body>
     <script src="./public/js/scripts.js"></script>
     <script src="./public/js/user.js"></script>
     <script src="./public/js/groups.js"></script>
@@ -244,9 +244,7 @@
     </div><!-- /page -->
 
     <script>
-        function onLoad(){
-            document.addEventListener('deviceready', onDeviceReady);
-        }
+        document.addEventListener('deviceready', onDeviceReady);
 
         function onDeviceReady(){
             alert("HOI");
