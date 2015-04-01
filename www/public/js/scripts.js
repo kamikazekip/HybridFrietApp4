@@ -104,6 +104,7 @@ $(document).ready(function(){
     function onSuccessGeo(position) {
         console.log(position);
         globalLocation = position;
+        $('#myGeo').html(globalLocation.coords.latitude + " - " + globalLocation.coords.longitude);
 
         $.ajax( {
 					url : globalServerUrl + '/snackbars/?lat='+globalLocation.coords.latitude+ '&long='+globalLocation.coords.longitude,
@@ -147,6 +148,7 @@ $(document).ready(function(){
      // onError Callback receives a PositionError object
     //
     function onErrorGeo(error) {
+    	$('#myGeo').html('No geo');
         $('#list-bestlling-snackbars').append('<button class="ui-btn ui-shadow" data-snackbarnaam="Overig" data-snackbarweb="" class="group-button-place-order">Overig</button>');
     }
 
