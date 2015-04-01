@@ -50,10 +50,16 @@ var orderDetails = [
 
 $(document).ready(function(){
 	getAuthHeader();
-	loadDishes();
-	loadUsers();
+	if(checkLogin()){
+		console.log('logged in');
+		loadDishes();
+		loadUsers();
+		navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
+	}
+	
+	
 
-	navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
+	
 	$("#placeOrderButton").on("tap", function(){
 		var scopeDish = $("#select-products-order").val();
 
@@ -99,6 +105,7 @@ $(document).ready(function(){
     // onSuccess Geolocation
     //
     function onSuccessGeo(position) {
+
         console.log(position);
         globalLocation = position;
         $('#myGeo').html(globalLocation.coords.latitude + " - " + globalLocation.coords.longitude);

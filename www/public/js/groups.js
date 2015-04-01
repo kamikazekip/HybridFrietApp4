@@ -23,6 +23,7 @@ $(document).on('tap','#btn-addToGroup', function() {
 			beforeSend : function(xhr) {
 		          //var bytes = Crypto.charenc.Binary.stringToBytes(inputUserName + ":" + inputPassword);
 		          //var base64 = Crypto.util.bytesToBase64(bytes);
+		          xhr.setRequestHeader("Authorization", globalAuthheader);
 		          $.mobile.loading('show');
 			},
 			complete: function() { $.mobile.loading('hide'); }, //Hide spinner

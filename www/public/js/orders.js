@@ -130,7 +130,7 @@ function newOrder(taper){
 				
 			},
 			success : function(model) {
-				$('#group-list-orders').append('<button class="ui-btn  group-btn-order group-btn-order-active" data-id="'+model.order._id+'">'+ readAbleDate(model.order.date) +' - '+ model.order.creator+'</button>');	
+				$('#group-list-orders').prepend('<button class="ui-btn  group-btn-order group-btn-order-active" data-id="'+model.order._id+'">'+ readAbleDate(model.order.date) +' - '+ model.order.creator+'</button>');	
 				$.mobile.changePage("#page-group", {transition : "slideup"});
 			}
 		});

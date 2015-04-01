@@ -129,6 +129,9 @@ function login(){
 			  	clearMessages();
 			  	$('#login-text-gebruikersnaam').val("");
 				$('#login-text-wachtwoord').val("");
+				loadDishes();
+				loadUsers();
+				navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
 				$.mobile.loading('hide');
 
 			}
