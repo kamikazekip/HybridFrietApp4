@@ -775,4 +775,5 @@ button[disabled],
         width:30em;
     }
     .ui-panel-close { width:30em; }
+    .ui-panel-closed {  width: 17em; }
 }

@@ -87,7 +87,7 @@ function login(){
 		// Auth header is nodig bij het zenden van requests.
 		// Deze wordt gegenereerd uit het username en password
 		var authHeader = "Basic " + $.base64.encode(inputUserName + ":" + inputPassword);
-		
+		$.mobile.loading('show');
 		// 
 		$.ajax( {
 			url : globalServerUrl + '/login',
@@ -110,6 +110,7 @@ function login(){
 				$('#login-text-gebruikersnaam').val("");
 				$('#login-text-wachtwoord').val("");
 				clearMessages();
+				$.mobile.loading('hide');
 				
 			},
 			success : function(model) {
@@ -123,6 +124,7 @@ function login(){
 			  	clearMessages();
 			  	$('#login-text-gebruikersnaam').val("");
 				$('#login-text-wachtwoord').val("");
+				$.mobile.loading('hide');
 
 			}
 		});
